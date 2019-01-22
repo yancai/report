@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/pygments/default.css" rel="stylesheet">
+    <link href="/css/blog/general.css" rel="stylesheet">
+
+    <style type="text/css">
+        h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
+            content: "";
+            display: block;
+            height: 55px;
+            margin: -55px 0 0;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 30px;
+        }
+
+        .side-icon {
+            margin-right: 5px;
+        }
+
+        .side-hr {
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+        .sidebar-module {
+            max-width: 250px;
+        }
+
+        .sidebar-title {
+            font-weight: 700;
+        }
+
+        .bs-docs-sidebar.affix {
+            position: static;
+        }
+
+        .bs-docs-sidebar.affix {
+            position: static;
+        }
+
+        @media (min-width: 768px) {
+            .bs-docs-sidebar {
+                padding-left: 20px;
+            }
+        }
+
+        .bs-docs-sidenav {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .bs-docs-sidebar .nav > li > a {
+            display: block;
+            padding: 0px 20px;
+            color: #767676;
+            font-weight: 500;
+            font-size: 13px;
+        }
+
+        .bs-docs-sidebar .nav > li > a:focus, .bs-docs-sidebar .nav > li > a:hover {
+            padding-left: 19px;
+            border-left: 1px solid #0088cc;
+            background-color: transparent;
+            color: #0088cc;
+            text-decoration: none;
+        }
+
+        .bs-docs-sidebar .nav > .active:focus > a, .bs-docs-sidebar .nav > .active:hover > a, .bs-docs-sidebar .nav > .active > a {
+            padding-left: 18px;
+            border-left: 2px solid #0088cc;
+            background-color: transparent;
+            color: #0088cc;
+            font-weight: 700;
+        }
+
+        .bs-docs-sidebar .nav .nav {
+            display: none;
+            padding-bottom: 5px;
+        }
+
+        .bs-docs-sidebar .nav .nav > li > a {
+            padding-top: 1px;
+            padding-bottom: 1px;
+            padding-left: 30px;
+            font-weight: 400;
+            font-size: 9pt;
+        }
+
+        .bs-docs-sidebar .nav .nav > li > a:focus, .bs-docs-sidebar .nav .nav > li > a:hover {
+            padding-left: 29px;
+        }
+
+        .bs-docs-sidebar .nav .nav > .active:focus > a, .bs-docs-sidebar .nav .nav > .active:hover > a, .bs-docs-sidebar .nav .nav > .active > a {
+            padding-left: 28px;
+            font-weight: 500;
+        }
+
+        @media (min-width: 992px) {
+            .bs-docs-sidebar .nav > .active > ul {
+                display: block;
+            }
+
+            .bs-docs-sidebar.affix, .bs-docs-sidebar.affix-bottom {
+                width: 213px;
+            }
+
+            .bs-docs-sidebar.affix {
+                position: fixed;
+                top: 20px;
+            }
+
+            .bs-docs-sidebar.affix-bottom {
+                position: absolute;
+            }
+
+            .bs-docs-sidebar.affix .bs-docs-sidenav, .bs-docs-sidebar.affix-bottom .bs-docs-sidenav {
+                margin-top: 0;
+                margin-bottom: 0;
+            }
+
+        }
+
+        @media (min-width: 1200px) {
+            .bs-docs-sidebar.affix, .bs-docs-sidebar.affix-bottom {
+                width: 263px;
+            }
+        }
+
+        .icon-link {
+            color: inherit;
+            opacity: .75;
+            -webkit-transition: color .16s linear;
+            -o-transition: color .16s linear;
+            transition: color .16s linear;
+            margin-left: -1em;
+            padding-right: 1em;
+            position: absolute;
+        }
+
+        .icon-link:hover, .icon-link:focus {
+            text-decoration: none;
+            opacity: 1;
+        }
+
+    </style>
+
+
+    <title>
+    day2
+</title>
+</head>
+
+<body data-spy="scroll" data-target="#side-menu">
+<div>
+    <div>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed"
+                            data-toggle="collapse" data-target="#navbar"
+                            aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a class="navbar-brand" href="/">Blog</a>
+                        </li>
+                        <li>
+                            <a href="/pages/articles.html"><i class="icon-list-alt" style="margin-right: 3px"></i>所有文章</a>
+                        </li>
+                        <li>
+                            <a href="/pages/tags.html"><i class="icon-tags" style="margin-right: 3px"></i>标签云</a>
+                        </li>
+                        <li>
+                            <a href="/pages/articles/About.html"><i class=" icon-star" style="margin-right: 3px"></i>关于</a>
+                        </li>
+                    </ul>
+
+
+
+
+
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div style="min-height: 570px">
+        
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-sm-8 blog-main">
+                <h1 id="day2">Day2</h1>
+<h2 id="hosts">修改hosts</h2>
+<div class="highlight"><pre><span></span>sudo vim /etc/hosts
+
+<span class="c1"># 追加如下内容，本机域名使用hostname命令查询</span>
+<span class="m">127</span>.0.0.1 本机域名
+</pre></div>
+
+
+<h2 id="docker">docker 安装及配置</h2>
+<div class="highlight"><pre><span></span><span class="c1"># 安装docker</span>
+sudo apt-get remove docker docker-engine docker.io
+
+sudo apt-get update
+
+sudo apt-get install apt-transport-https ca-certificates curl wget unzip zsh git software-properties-common
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg <span class="p">|</span> sudo apt-key add -
+
+sudo add-apt-repository <span class="s2">&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable&quot;</span>
+
+sudo apt-get install docker-ce<span class="o">=</span><span class="m">17</span>.03.3~ce-0~ubuntu-xenial
+
+<span class="c1"># 安装好docker之后使用如下命令查看docker状态，状态为Active则说明docker服务正常</span>
+sudo systemctl status docker
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c1"># 配置 docker</span>
+sudo vim /etc/docker/daemon.json
+</pre></div>
+
+
+<p>添加如下内容</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;registry-mirrors&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;https://registry.docker-cn.com&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;dns&quot;</span><span class="p">:[</span>
+        <span class="s2">&quot;114.114.114.114&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;8.8.8.8&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;8.8.4.4&quot;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>重启docker</p>
+<div class="highlight"><pre><span></span>sudo systemctl restart docker
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>sudo docker pull nginx
+
+# 清理所有docker数据
+sudo docker system prune -a
+</pre></div>
+
+
+<h2 id="_1">配置网络</h2>
+<div class="highlight"><pre><span></span>sudo vim /etc/netplan/50-cloud-init.yaml
+</pre></div>
+
+
+<p>修改后的内容<strong>示例</strong>如下：</p>
+<div class="highlight"><pre><span></span><span class="n">network</span><span class="o">:</span>
+    <span class="n">version</span><span class="o">:</span> <span class="mi">2</span>
+    <span class="n">ethernets</span><span class="o">:</span>
+        <span class="n">ens32</span><span class="o">:</span>
+            <span class="err">#</span> <span class="err">注意修改</span><span class="n">ip</span>
+            <span class="n">addresses</span><span class="o">:</span> <span class="o">[</span><span class="mf">192.168</span><span class="o">.</span><span class="na">xxx</span><span class="o">.</span><span class="na">xxx</span><span class="o">/</span><span class="mi">24</span><span class="o">]</span>
+            <span class="err">#</span> <span class="err">注意修改网关，可以使用</span> <span class="n">route</span> <span class="o">-</span><span class="n">n</span> <span class="err">查询</span>
+            <span class="n">gateway4</span><span class="o">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">74.2</span>
+            <span class="n">nameservers</span><span class="o">:</span>
+                <span class="n">addresses</span><span class="o">:</span> <span class="o">[</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.53</span><span class="o">,</span><span class="mf">114.114</span><span class="o">.</span><span class="mf">114.114</span><span class="o">,</span><span class="mf">8.8</span><span class="o">.</span><span class="mf">8.8</span><span class="o">,</span><span class="mf">8.8</span><span class="o">.</span><span class="mf">4.4</span><span class="o">]</span>
+</pre></div>
+
+
+<p>修改网络配置后使用如下命令应用配置：</p>
+<div class="highlight"><pre><span></span>sudo netplan apply
+</pre></div>
+
+
+<h2 id="oh-my-zsh">安装&amp;配置 oh-my-zsh</h2>
+<div class="highlight"><pre><span></span>sh -c <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span class="k">)</span><span class="s2">&quot;</span>
+
+<span class="c1"># 修改zsh配置</span>
+vim ~/.zshrc
+</pre></div>
+
+
+<h2 id="kubectl">安装kubectl</h2>
+<h2 id="helm">安装helm</h2>
+<h2 id="svcat">安装svcat</h2>
+<h2 id="docker-compose">安装docker-compose</h2>
+<div class="highlight"><pre><span></span>sudo curl -L https://github.com/docker/compose/releases/download/1.21.0/docker-compose-Linux-x86_64 -o /usr/local/bin/docker-compose
+
+sudo chmod +x /usr/local/bin/docker-compose
+</pre></div>
+
+
+<h2 id="rancher">安装rancher</h2>
+<div class="highlight"><pre><span></span>mkdir rancher
+vim docker-compose.yaml
+</pre></div>
+
+
+<p><code>rancher2.x</code>的docker-compose.yaml内容如下：</p>
+<div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">version</span><span class="p p-Indicator">:</span> <span class="s">&#39;2.2&#39;</span>
+<span class="l l-Scalar l-Scalar-Plain">services</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">rancher</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">image</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">rancher/rancher:v2.1.1</span>
+        <span class="l l-Scalar l-Scalar-Plain">container_name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">rancher</span>
+        <span class="l l-Scalar l-Scalar-Plain">hostname</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">rancher</span>
+        <span class="l l-Scalar l-Scalar-Plain">environment</span><span class="p p-Indicator">:</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">TZ=Asia/Shanghai</span>
+        <span class="l l-Scalar l-Scalar-Plain">ports</span><span class="p p-Indicator">:</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">80:80</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">443:443</span>
+        <span class="l l-Scalar l-Scalar-Plain">restart</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">always</span>
+</pre></div>
+
+
+<p><code>rancher1.x</code>的docker-common.yaml内容如下：</p>
+<div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">version</span><span class="p p-Indicator">:</span> <span class="s">&#39;2.2&#39;</span>
+<span class="l l-Scalar l-Scalar-Plain">services</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">rancher</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">image</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">rancher/server:v1.6.23</span>
+        <span class="l l-Scalar l-Scalar-Plain">container_name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">rancher</span>
+        <span class="l l-Scalar l-Scalar-Plain">hostname</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">rancher</span>
+        <span class="l l-Scalar l-Scalar-Plain">environment</span><span class="p p-Indicator">:</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">TZ=Asia/Shanghai</span>
+        <span class="l l-Scalar l-Scalar-Plain">ports</span><span class="p p-Indicator">:</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">8080:8080</span>
+        <span class="l l-Scalar l-Scalar-Plain">restart</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">always</span>
+</pre></div>
+            </div>
+
+            <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                <div class="sidebar-module" data-spy="affix">
+                    <div>
+                        <h5 class="sidebar-title">
+                            <button class="btn btn-default"  data-toggle="collapse" href="#meta_box">
+                                开/合 文章属性
+                            </button>
+                        </h5>
+                    </div>
+                    <div class="collapse in" id="meta_box">
+                        <div class='sidebar-module-inset'><h5 class='sidebar-title'><i class='icon-circle-blank side-icon'></i>标题</h5><p>day2</p></div>
+                        <div class="sidebar-module-inset">
+                            <h5 class="sidebar-title"><i class="icon-lightbulb side-icon"></i>摘要</h5>
+
+                            <p></p>
+                        </div>
+                        <hr class="side-hr">
+                        <div>
+                            <h5 class="sidebar-title"><i class="icon-user side-icon"></i>作者</h5>
+                            <div><a href='' class='tag-index'>匿名</a></div>
+                        </div>
+                        <hr class="side-hr">
+                        <div>
+                            <h5 class="sidebar-title"><i class="icon-tags side-icon"></i>标签</h5>
+                            <div></div>
+                        </div>
+                        <hr class="side-hr">
+                    </div>
+                    <div class="sidebar-module">
+                        <h5 class="sidebar-title"><i class="icon-th-list side-icon"></i>目录</h5>
+                        <nav id="side-menu" class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix-top">
+                            <div class="toc">
+<ul>
+<li><a href="#day2">Day2</a><ul>
+<li><a href="#hosts">修改hosts</a></li>
+<li><a href="#docker">docker 安装及配置</a></li>
+<li><a href="#_1">配置网络</a></li>
+<li><a href="#oh-my-zsh">安装&amp;配置 oh-my-zsh</a></li>
+<li><a href="#kubectl">安装kubectl</a></li>
+<li><a href="#helm">安装helm</a></li>
+<li><a href="#svcat">安装svcat</a></li>
+<li><a href="#docker-compose">安装docker-compose</a></li>
+<li><a href="#rancher">安装rancher</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    </div>
+
+    <footer class="blog-footer">
+        <p><a href="#">Back to top</a></p>
+        <p><i>used
+            <a href="http://v3.bootcss.com/">Bootstrap3</a>
+            & <a href="http://www.bootcss.com/p/font-awesome/">Font Awesome</a>
+            & <a href="http://flask.pocoo.org/">Flask</a>
+        </i></p>
+        <p>
+            <a href="https://github.com/yancai/blog">By YanCai<img style="vertical-align: bottom; height: 12px; margin-left: 5px" src="/images/GitHub-Mark-32px.png"></a>
+        </p>
+
+    </footer>
+</div>
+
+    <script src="/js/third/jquery.min.js"></script>
+    <script src="/js/third/bootstrap.min.js"></script>
+    <script src="/js/src/article_page.js"></script>
+    <script type="application/javascript">
+        $(".toc ul").addClass("nav");
+        $(".toc ul:first").addClass("bs-docs-sidenav");
+        $("table").addClass("table table-striped table-bordered table-hover")
+    </script>
+
+</body>
+</html>

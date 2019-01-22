@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/pygments/default.css" rel="stylesheet">
+    <link href="/css/blog/general.css" rel="stylesheet">
+
+    <style type="text/css">
+        h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
+            content: "";
+            display: block;
+            height: 55px;
+            margin: -55px 0 0;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 30px;
+        }
+
+        .side-icon {
+            margin-right: 5px;
+        }
+
+        .side-hr {
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+        .sidebar-module {
+            max-width: 250px;
+        }
+
+        .sidebar-title {
+            font-weight: 700;
+        }
+
+        .bs-docs-sidebar.affix {
+            position: static;
+        }
+
+        .bs-docs-sidebar.affix {
+            position: static;
+        }
+
+        @media (min-width: 768px) {
+            .bs-docs-sidebar {
+                padding-left: 20px;
+            }
+        }
+
+        .bs-docs-sidenav {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .bs-docs-sidebar .nav > li > a {
+            display: block;
+            padding: 0px 20px;
+            color: #767676;
+            font-weight: 500;
+            font-size: 13px;
+        }
+
+        .bs-docs-sidebar .nav > li > a:focus, .bs-docs-sidebar .nav > li > a:hover {
+            padding-left: 19px;
+            border-left: 1px solid #0088cc;
+            background-color: transparent;
+            color: #0088cc;
+            text-decoration: none;
+        }
+
+        .bs-docs-sidebar .nav > .active:focus > a, .bs-docs-sidebar .nav > .active:hover > a, .bs-docs-sidebar .nav > .active > a {
+            padding-left: 18px;
+            border-left: 2px solid #0088cc;
+            background-color: transparent;
+            color: #0088cc;
+            font-weight: 700;
+        }
+
+        .bs-docs-sidebar .nav .nav {
+            display: none;
+            padding-bottom: 5px;
+        }
+
+        .bs-docs-sidebar .nav .nav > li > a {
+            padding-top: 1px;
+            padding-bottom: 1px;
+            padding-left: 30px;
+            font-weight: 400;
+            font-size: 9pt;
+        }
+
+        .bs-docs-sidebar .nav .nav > li > a:focus, .bs-docs-sidebar .nav .nav > li > a:hover {
+            padding-left: 29px;
+        }
+
+        .bs-docs-sidebar .nav .nav > .active:focus > a, .bs-docs-sidebar .nav .nav > .active:hover > a, .bs-docs-sidebar .nav .nav > .active > a {
+            padding-left: 28px;
+            font-weight: 500;
+        }
+
+        @media (min-width: 992px) {
+            .bs-docs-sidebar .nav > .active > ul {
+                display: block;
+            }
+
+            .bs-docs-sidebar.affix, .bs-docs-sidebar.affix-bottom {
+                width: 213px;
+            }
+
+            .bs-docs-sidebar.affix {
+                position: fixed;
+                top: 20px;
+            }
+
+            .bs-docs-sidebar.affix-bottom {
+                position: absolute;
+            }
+
+            .bs-docs-sidebar.affix .bs-docs-sidenav, .bs-docs-sidebar.affix-bottom .bs-docs-sidenav {
+                margin-top: 0;
+                margin-bottom: 0;
+            }
+
+        }
+
+        @media (min-width: 1200px) {
+            .bs-docs-sidebar.affix, .bs-docs-sidebar.affix-bottom {
+                width: 263px;
+            }
+        }
+
+        .icon-link {
+            color: inherit;
+            opacity: .75;
+            -webkit-transition: color .16s linear;
+            -o-transition: color .16s linear;
+            transition: color .16s linear;
+            margin-left: -1em;
+            padding-right: 1em;
+            position: absolute;
+        }
+
+        .icon-link:hover, .icon-link:focus {
+            text-decoration: none;
+            opacity: 1;
+        }
+
+    </style>
+
+
+    <title>
+    backendapi
+</title>
+</head>
+
+<body data-spy="scroll" data-target="#side-menu">
+<div>
+    <div>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed"
+                            data-toggle="collapse" data-target="#navbar"
+                            aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a class="navbar-brand" href="/">Blog</a>
+                        </li>
+                        <li>
+                            <a href="/pages/articles.html"><i class="icon-list-alt" style="margin-right: 3px"></i>所有文章</a>
+                        </li>
+                        <li>
+                            <a href="/pages/tags.html"><i class="icon-tags" style="margin-right: 3px"></i>标签云</a>
+                        </li>
+                        <li>
+                            <a href="/pages/articles/About.html"><i class=" icon-star" style="margin-right: 3px"></i>关于</a>
+                        </li>
+                    </ul>
+
+
+
+
+
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div style="min-height: 570px">
+        
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-sm-8 blog-main">
+                <h1 id="backend-api">Backend API 接口文档</h1>
+<ul>
+<li><a href="#Response">Response</a></li>
+<li><a href="#Instance">Instance</a></li>
+<li><a href="#创建实例">创建实例</a></li>
+<li><a href="#删除实例">删除实例</a></li>
+<li><a href="#获取实例信息">获取实例信息</a></li>
+<li><a href="#获取实例状态（用于异步）">获取实例状态（用于异步）</a></li>
+<li><a href="更新实例（优先级低）">更新实例（优先级低）</a></li>
+<li><a href="#Binding">Binding</a></li>
+<li><a href="#绑定">绑定</a></li>
+<li><a href="#绑定">解绑</a></li>
+<li><a href="#获取绑定信息">获取绑定信息</a></li>
+<li><a href="#更新绑定（优先级低）">更新绑定（优先级低）</a></li>
+</ul>
+<h2 id="response">Response</h2>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>201</td>
+<td>Created</td>
+</tr>
+<tr>
+<td>202</td>
+<td>Accepted</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+</tr>
+<tr>
+<td>409</td>
+<td>Conflict</td>
+</tr>
+<tr>
+<td>410</td>
+<td>Gone</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="instance">Instance</h2>
+<h3 id="_1">创建实例</h3>
+<p><strong><code>PUT</code></strong> <code>/v1/instance/{release_name}</code></p>
+<p><strong>Describe:</strong><br />
+创建服务实例</p>
+<p><strong>Request:</strong>  </p>
+<p>Path Parameters:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>是否必填</th>
+<th>类型</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>release_name</td>
+<td>REQUIRED</td>
+<td>string</td>
+<td>名称</td>
+</tr>
+</tbody>
+</table>
+<p>Body Parameters:  </p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>是否必填</th>
+<th>类型</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>instance_id</td>
+<td>REQUIRED</td>
+<td>string</td>
+<td>实例id</td>
+</tr>
+<tr>
+<td>project_id</td>
+<td>REQUIRED</td>
+<td>string</td>
+<td>项目id</td>
+</tr>
+<tr>
+<td>tenant_id</td>
+<td>REQUIRED</td>
+<td>string</td>
+<td>租户id</td>
+</tr>
+<tr>
+<td>chart_name</td>
+<td>REQUIRED</td>
+<td>string</td>
+<td>chart包名称</td>
+</tr>
+<tr>
+<td>configuration</td>
+<td>OPTIONAL</td>
+<td>object</td>
+<td>配置信息，参考chart包的参数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong>  </p>
+<p>http_code:  </p>
+<ul>
+<li>200</li>
+<li>201</li>
+<li>202</li>
+<li>400</li>
+<li>409</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err">???</span>
+</pre></div>
+
+
+<h3 id="_2">删除实例</h3>
+<p><strong><code>DELETE</code></strong> <code>/v1/instance/{release_name}</code></p>
+<p><strong>Describe:</strong><br />
+删除服务实例</p>
+<p><strong>Request:</strong>  </p>
+<p>Path Parameters:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>是否必填</th>
+<th>类型</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>release_name</td>
+<td>REQUIRED</td>
+<td>string</td>
+<td>名称</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong>  </p>
+<p>http_code:  </p>
+<ul>
+<li>200</li>
+<li>500</li>
+</ul>
+<h3 id="_3">获取实例信息</h3>
+<p><strong><code>GET</code></strong> <code>/v1/instance/{release_name}</code></p>
+<p><strong>Describe:</strong><br />
+获取服务实例</p>
+<p><strong>Request:</strong>  </p>
+<p>Path Parameters:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>是否必填</th>
+<th>类型</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>release_name</td>
+<td>REQUIRED</td>
+<td>string</td>
+<td>名称</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong>  </p>
+<p>http_code:  </p>
+<ul>
+<li>200</li>
+<li>410</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;release_name&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;chart_name&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3 id="_4">获取实例状态（用于异步）</h3>
+<p><strong><code>GET</code></strong> <code>/v1/instance/{release_name}/status</code></p>
+<p><strong>Describe:</strong><br />
+获取服务实例状态</p>
+<p><strong>Request:</strong>  </p>
+<p>Path Parameters:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>是否必填</th>
+<th>类型</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>release_name</td>
+<td>REQUIRED</td>
+<td>string</td>
+<td>名称</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong>  </p>
+<p>http_code:  </p>
+<ul>
+<li>200</li>
+<li>410</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;msg&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>status枚举值如下：  </p>
+<ul>
+<li><code>Waiting</code></li>
+<li><code>Running</code></li>
+<li><code>Terminated</code></li>
+</ul>
+<h3 id="_5">更新实例（优先级低）</h3>
+<h2 id="binding">Binding</h2>
+<h3 id="_6">绑定</h3>
+<p><strong><code>PUT</code></strong> <code>/v1/binding/{binding_type}/{release_name}</code></p>
+<p><strong>Describe:</strong><br />
+绑定</p>
+<p><strong>Request:</strong>  </p>
+<p>Path Parameters:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>是否必填</th>
+<th>类型</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>binding_type</td>
+<td>REQUIRED</td>
+<td>strong</td>
+<td>绑定类型，枚举：<code>parameters</code>, <code>syslogDrainUrl</code>, <code>volumeMounts</code></td>
+</tr>
+<tr>
+<td>release_name</td>
+<td>REQUIRED</td>
+<td>string</td>
+<td>名称</td>
+</tr>
+</tbody>
+</table>
+<p>Body Parameters:  </p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>是否必填</th>
+<th>类型</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>parameters</td>
+<td>REQUIRED</td>
+<td>object</td>
+<td>配置信息</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><span class="c1">// mysql</span>
+<span class="nx">parameters</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;mysql&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;configurations&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;username&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;password&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// redis</span>
+<span class="nx">parameters</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;redis&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;configurations&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;password&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><strong>Response:</strong>  </p>
+<p>http_code:  </p>
+<ul>
+<li>200</li>
+<li>201</li>
+<li>202</li>
+<li>400</li>
+<li>409</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;configurations&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3 id="_7">解绑</h3>
+<p><strong><code>DELETE</code></strong> <code>/v1/binding/{binding_type}/{release_name}</code></p>
+<p><strong>Describe:</strong><br />
+解绑</p>
+<p><strong>Request:</strong>  </p>
+<p>Path Parameters:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>是否必填</th>
+<th>类型</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>binding_type</td>
+<td>REQUIRED</td>
+<td>strong</td>
+<td>绑定类型，枚举：<code>parameters</code>, <code>syslogDrainUrl</code>, <code>volumeMounts</code></td>
+</tr>
+<tr>
+<td>release_name</td>
+<td>REQUIRED</td>
+<td>string</td>
+<td>名称</td>
+</tr>
+</tbody>
+</table>
+<p>Body Parameters:  </p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>是否必填</th>
+<th>类型</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>parameters</td>
+<td>REQUIRED</td>
+<td>object</td>
+<td>配置信息</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><span class="c1">// mysql</span>
+<span class="nx">parameters</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;mysql&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;configurations&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;username&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// redis</span>
+<span class="nx">parameters</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;redis&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><strong>Response:</strong>  </p>
+<h3 id="_8">获取绑定信息</h3>
+<p><strong><code>GET</code></strong> <code>/v1/binding/{binding_type}/{release_name}</code></p>
+<p><strong>Describe:</strong><br />
+解绑</p>
+<p><strong>Request:</strong>  </p>
+<p>Path Parameters:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>是否必填</th>
+<th>类型</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>binding_type</td>
+<td>REQUIRED</td>
+<td>strong</td>
+<td>绑定类型，枚举：<code>parameters</code>, <code>syslogDrainUrl</code>, <code>volumeMounts</code></td>
+</tr>
+<tr>
+<td>release_name</td>
+<td>REQUIRED</td>
+<td>string</td>
+<td>名称</td>
+</tr>
+</tbody>
+</table>
+<p>Body Parameters:  </p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>是否必填</th>
+<th>类型</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>parameters</td>
+<td>REQUIRED</td>
+<td>object</td>
+<td>配置信息</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><span class="c1">// mysql</span>
+<span class="nx">parameters</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;mysql&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1">// redis</span>
+<span class="nx">parameters</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;redis&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><strong>Response:</strong>  </p>
+<p>http_code:  </p>
+<ul>
+<li>200</li>
+<li>500</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;configurations&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3 id="_9">更新绑定（优先级低）</h3>
+            </div>
+
+            <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                <div class="sidebar-module" data-spy="affix">
+                    <div>
+                        <h5 class="sidebar-title">
+                            <button class="btn btn-default"  data-toggle="collapse" href="#meta_box">
+                                开/合 文章属性
+                            </button>
+                        </h5>
+                    </div>
+                    <div class="collapse in" id="meta_box">
+                        <div class='sidebar-module-inset'><h5 class='sidebar-title'><i class='icon-circle-blank side-icon'></i>标题</h5><p>backendapi</p></div>
+                        <div class="sidebar-module-inset">
+                            <h5 class="sidebar-title"><i class="icon-lightbulb side-icon"></i>摘要</h5>
+
+                            <p></p>
+                        </div>
+                        <hr class="side-hr">
+                        <div>
+                            <h5 class="sidebar-title"><i class="icon-user side-icon"></i>作者</h5>
+                            <div><a href='' class='tag-index'>匿名</a></div>
+                        </div>
+                        <hr class="side-hr">
+                        <div>
+                            <h5 class="sidebar-title"><i class="icon-tags side-icon"></i>标签</h5>
+                            <div></div>
+                        </div>
+                        <hr class="side-hr">
+                    </div>
+                    <div class="sidebar-module">
+                        <h5 class="sidebar-title"><i class="icon-th-list side-icon"></i>目录</h5>
+                        <nav id="side-menu" class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix-top">
+                            <div class="toc">
+<ul>
+<li><a href="#backend-api">Backend API 接口文档</a><ul>
+<li><a href="#response">Response</a></li>
+<li><a href="#instance">Instance</a><ul>
+<li><a href="#_1">创建实例</a></li>
+<li><a href="#_2">删除实例</a></li>
+<li><a href="#_3">获取实例信息</a></li>
+<li><a href="#_4">获取实例状态（用于异步）</a></li>
+<li><a href="#_5">更新实例（优先级低）</a></li>
+</ul>
+</li>
+<li><a href="#binding">Binding</a><ul>
+<li><a href="#_6">绑定</a></li>
+<li><a href="#_7">解绑</a></li>
+<li><a href="#_8">获取绑定信息</a></li>
+<li><a href="#_9">更新绑定（优先级低）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    </div>
+
+    <footer class="blog-footer">
+        <p><a href="#">Back to top</a></p>
+        <p><i>used
+            <a href="http://v3.bootcss.com/">Bootstrap3</a>
+            & <a href="http://www.bootcss.com/p/font-awesome/">Font Awesome</a>
+            & <a href="http://flask.pocoo.org/">Flask</a>
+        </i></p>
+        <p>
+            <a href="https://github.com/yancai/blog">By YanCai<img style="vertical-align: bottom; height: 12px; margin-left: 5px" src="/images/GitHub-Mark-32px.png"></a>
+        </p>
+
+    </footer>
+</div>
+
+    <script src="/js/third/jquery.min.js"></script>
+    <script src="/js/third/bootstrap.min.js"></script>
+    <script src="/js/src/article_page.js"></script>
+    <script type="application/javascript">
+        $(".toc ul").addClass("nav");
+        $(".toc ul:first").addClass("bs-docs-sidenav");
+        $("table").addClass("table table-striped table-bordered table-hover")
+    </script>
+
+</body>
+</html>
