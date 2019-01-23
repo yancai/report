@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 
 # 日报读取文件夹
-INPUT_CONTENT = "./in/"
+DATA_DIR = "./in/"
 
 USERS = [
     {"id": "01", "name": "Tom"},

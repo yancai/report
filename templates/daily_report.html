@@ -1,0 +1,20 @@
+{% extends "base_page.html" %}
+
+{% block title %}
+    今日晨报
+{% endblock %}
+
+{% block content %}
+    <div class="container theme-showcase">
+        <h1 class="font-xihei" id="date-title">晨报</h1>
+        <div>
+            <div id="div-report">
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block self_js %}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/src/utils.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/src/daily_report.js') }}"></script>
+{% endblock %}

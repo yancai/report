@@ -14,4 +14,7 @@
 {% block ext_js %}
     <script type="text/javascript" src="{{ url_for('static', filename='js/third/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/third/bootstrap.min.js') }}"></script>
+    {% block self_js %}
+    {% endblock %}
 {% endblock %}
+
