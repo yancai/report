@@ -6,6 +6,7 @@ from os import path
 
 from flask import current_app
 
+from api.const import KEY_DOMAIN
 from settings import USERS, DATA_DIR
 
 _user_map = {}
@@ -18,7 +19,10 @@ def get_user_map():
     """
     global _user_map
     if _user_map == {}:
-        _user_map = {i["id"]: i["name"] for i in USERS}
+        _user_map = {
+            i["id"]: {"name": i["name"], KEY_DOMAIN: i[KEY_DOMAIN]}
+            for i in USERS
+        }
     return _user_map
 
 
@@ -59,6 +63,17 @@ def list_report_by_date(date_str):
     files = [path.join(report_dir, f) for f in filenames]
 
     return files
+
+
+def verify_domain(user_id, domain):
+    """验证用户对应的域账号是否正确
+
+    :param user_id:
+    :param domain:
+    :return:
+    """
+    user_map = get_user_map()
+    return user_map.get(user_id, {}).get(KEY_DOMAIN, None) == domain
 
 
 if __name__ == "__main__":

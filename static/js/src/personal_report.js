@@ -8,48 +8,8 @@ const TEMPLATE_LABEL_TASK = '<div class="input-group">' +
     '<label id="input01" class="form-control" aria-describedby="basic-addon{taskId}">{task}</label>' +
     '</div>';
 
-const TEMPLATE_USER = '<li><a href="#" uid="{uid}" onclick="shows($(this).text(), \'{uid}\')">{name}</a></li>';
+const TEMPLATE_USER = '<li><a uid="{uid}" onclick="selectUser($(this).text(), \'{uid}\')">{name}</a></li>';
 
-/**
- * 格式化日期
- * @param fmt
- * @param date
- * @returns {*}
- */
-function dateFtt(fmt, date) {
-    let o = {
-        "M+": date.getMonth() + 1,                      //月份
-        "d+": date.getDate(),                           //日
-        "h+": date.getHours(),                          //小时
-        "m+": date.getMinutes(),                        //分
-        "s+": date.getSeconds(),                        //秒
-        "q+": Math.floor((date.getMonth() + 3) / 3), //季度
-        "S": date.getMilliseconds()                     //毫秒
-    };
-    if (/(y+)/.test(fmt)) {
-        fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
-    }
-    for (let k in o) {
-        if (new RegExp("(" + k + ")").test(fmt)) {
-            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
-        }
-    }
-    return fmt;
-}
-
-/**
- * 获取日期字符串
- * @param delta 与当前日期差值
- * @returns {*}
- */
-function getDate(delta) {
-    if (delta === undefined || delta === '') {
-        delta = 0;
-    }
-    let ts = Math.round(new Date() / 1000 + delta * 86400);
-    let d = new Date(ts * 1000);
-    return dateFtt("yyyy-MM-dd", d);
-}
 
 /**
  * 渲染今日任务列表
@@ -126,16 +86,25 @@ function getDailyReport() {
 
     let uid = $("#label-name").attr("uid");
 
+    let domain = $("#input-domain").val();
+
     return {
         uid: uid,
+        domain: domain,
         yesterday: yesterdayTasks,
         today: todayTasks
     }
 }
 
 
-function shows(a, uid) {
+/**
+ * 选择用户
+ * @param a
+ * @param uid
+ */
+function selectUser(a, uid) {
     $('#label-name').text(a).attr("uid", uid);
+    $("#btn-commit").removeAttr("disabled");
 }
 
 
@@ -173,6 +142,9 @@ function commitTask() {
             if (data.msg === "success") {
                 window.location = "/report"
             }
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert(XMLHttpRequest.responseJSON.msg);
         }
     });
 
@@ -200,7 +172,7 @@ $(document).ready(function () {
     renderUsers();
 
 
-    // 绑定提交按钮事件
-    $("#btn-commit").click(commitTask);
+    // 绑定确认提交按钮事件
+    $("#btn-confirm").click(commitTask);
 
 });

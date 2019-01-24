@@ -4,10 +4,11 @@
 """Documentation"""
 from http import HTTPStatus
 
-from flask import Blueprint, jsonify, request, redirect, url_for, current_app
+from flask import Blueprint, jsonify, request, current_app
 
+from api.const import KEY_DOMAIN
 from api.model import PersonalReport
-from api.utils import list_report_by_date
+from api.utils import list_report_by_date, verify_domain
 from settings import USERS
 
 api = Blueprint(
@@ -24,15 +25,6 @@ def get_all_user():
     return jsonify({"users": USERS})
 
 
-@api.route("/dates/")
-def get_date():
-    """获取日期列表，后期删除
-
-    :return:
-    """
-    return jsonify({})
-
-
 @api.route("/report/<date_str>/<user_id>/", methods=["PUT"])
 def create_daily_report(date_str, user_id):
     """创建日报
@@ -46,6 +38,12 @@ def create_daily_report(date_str, user_id):
         d = request.get_json()
     except Exception as e:
         current_app.logger.error(e)
+        return jsonify({}), HTTPStatus.INTERNAL_SERVER_ERROR
+
+    # 验证域账号
+    if not verify_domain(user_id, d.get(KEY_DOMAIN, "")):
+        return jsonify({"msg": "验证域账号失败"}), HTTPStatus.FORBIDDEN
+
     report = PersonalReport(
         date_str, user_id, d.get("yesterday", []), d.get("today", [])
     )

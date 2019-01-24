@@ -33,7 +33,7 @@ class PersonalReport(object):
         """
         self.date_str = date_str
         self.user_id = user_id
-        self.user_name = self.user_map.get(self.user_id)
+        self.user_name = self.user_map.get(self.user_id).get("name")
         self.yesterday = yesterday
         self.today = today
 

@@ -8,7 +8,20 @@
     <div class="container theme-showcase">
         <h1 class="font-xihei" id="date-title">晨报填写</h1>
         <div>
-            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">提交</button>
+            <div class="btn-toolbar">
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle col-md-1" type="button" id="btn-name"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <span id="label-name">先选姓名</span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul id="ul-users" class="dropdown-menu" aria-labelledby="btn-name">
+                    </ul>
+                </div>
+                <button id="btn-commit" class="btn btn-primary" data-toggle="modal" data-target="#myModal"
+                        disabled="disabled">提交
+                </button>
+            </div>
             <!-- 模态框（Modal） -->
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                  aria-hidden="true">
@@ -19,20 +32,15 @@
                             <h4 class="modal-title" id="myModalLabel">提示</h4>
                         </div>
                         <div class="modal-body">
-                            <label>请选择人员，并确认提交</label>
-                            <div class="dropdown">
-                                <button class="btn btn-default dropdown-toggle" type="button" id="btn-name"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    <span id="label-name">选择姓名</span>
-                                    <span class="caret"></span>
-                                </button>
-                                <ul id="ul-users" class="dropdown-menu" aria-labelledby="btn-name">
-                                </ul>
+                            <div class="form-group">
+                                <label for="input-domain">请填写您的域账号，再确认</label>
+                                <input type="text" class="form-control" id="input-domain"
+                                       placeholder="域账号为邮箱@之前的名称，若邮箱abc@mail.com，则域账号为abc">
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                            <button type="button" class="btn btn-primary" id="btn-commit">确认</button>
+                            <button type="button" class="btn btn-primary" id="btn-confirm">确认</button>
                         </div>
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal -->
@@ -41,14 +49,14 @@
 
         <div>
             <div class="row">
-{#                <div class="col-sm-6 col-md-4">#}
-{#                    <div class="thumbnail">#}
-{#                        <div class="caption">#}
-{#                            <h3>昨日计划</h3>#}
-{#                            <div id="div-yesterday-todo-tasks"></div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
+                {#                <div class="col-sm-6 col-md-4">#}
+                {#                    <div class="thumbnail">#}
+                {#                        <div class="caption">#}
+                {#                            <h3>昨日计划</h3>#}
+                {#                            <div id="div-yesterday-todo-tasks"></div>#}
+                {#                        </div>#}
+                {#                    </div>#}
+                {#                </div>#}
                 <div id="diy-yesterday-done" class="col-sm-6 col-md-6">
                     <div class="thumbnail">
                         <div class="caption">
