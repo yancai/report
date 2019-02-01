@@ -58,6 +58,7 @@ def list_report_by_date(date_str):
     report_dir = path.realpath(path.join(
         current_app.root_path, DATA_DIR, "json", date_str,
     ))
+    prepare_path(report_dir)
 
     filenames = os.listdir(report_dir)
     files = [path.join(report_dir, f) for f in filenames]
