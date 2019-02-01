@@ -2,13 +2,14 @@
 # -*- coding:utf-8 -*-
 
 """Documentation"""
+import os
 from http import HTTPStatus
 
-from flask import Blueprint, jsonify, request, current_app
+from flask import Blueprint, jsonify, request, current_app, send_file
 
 from api.const import KEY_DOMAIN
 from api.model import PersonalReport
-from api.utils import list_report_by_date, verify_domain
+from api.utils import list_report_by_date, verify_domain, get_md_path
 from settings import USERS
 
 api = Blueprint(
@@ -71,6 +72,41 @@ def get_reports(date_str):
         reports.append(report)
 
     return jsonify({"data": reports})
+
+
+@api.route("/reports/md/<date_str>")
+def get_daily_report_md(date_str):
+    """获取Markdown格式日报
+
+    :param date_str:
+    :return:
+    """
+
+    # 是否以附件方式下载
+    attachment = request.args.get("attachment", None) is not None
+
+    mds = ["# 晨会纪要\n\n" + date_str + "\n"]
+
+    files = list_report_by_date(date_str)
+    for f in files:
+        md = PersonalReport.load_from_file(f).to_md()
+        mds.append(md)
+
+    md_str = "\n------\n\n".join(mds)
+
+    # 保存markdown文件
+    md_path = os.path.realpath(os.path.join(
+        get_md_path(date_str), date_str + ".md"
+    ))
+    with open(md_path, "w+", encoding="utf-8") as f:
+        f.write(md_str)
+
+    return send_file(
+        md_path,
+        as_attachment=attachment,
+        attachment_filename=date_str + ".md",
+        mimetype="text/markdown"
+    )
 
 
 if __name__ == "__main__":

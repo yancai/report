@@ -56,7 +56,7 @@ def list_report_by_date(date_str):
     :return:
     """
     report_dir = path.realpath(path.join(
-        current_app.root_path, DATA_DIR, date_str,
+        current_app.root_path, DATA_DIR, "json", date_str,
     ))
 
     filenames = os.listdir(report_dir)
@@ -74,6 +74,19 @@ def verify_domain(user_id, domain):
     """
     user_map = get_user_map()
     return user_map.get(user_id, {}).get(KEY_DOMAIN, None) == domain
+
+
+def get_md_path(date_str):
+    """获取Markdown文件存储位置
+
+    :param date_str:
+    :return:
+    """
+    md_dir = path.realpath(path.join(
+        current_app.root_path, DATA_DIR, "md", date_str
+    ))
+    prepare_path(md_dir)
+    return md_dir
 
 
 if __name__ == "__main__":

@@ -46,6 +46,26 @@ class PersonalReport(object):
             KEY_TODAY: self.today,
         }
 
+    def to_md(self):
+        """转换成Markdown 字符串
+
+        :return:
+        """
+
+        md = ""
+        md += self.user_name + "：  \n"
+        md += "已完成：\n\n"
+
+        for i, v in enumerate(self.yesterday):
+            md += "{}. {}\n".format(i + 1, v)
+
+        md += "\n计划：\n\n"
+
+        for i, v in enumerate(self.today):
+            md += "{}. {}\n".format(i + 1, v)
+
+        return md
+
     def save(self):
         """保存晨报到文件
 
