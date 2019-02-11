@@ -72,7 +72,7 @@ class PersonalReport(object):
         :return:
         """
         filename = path.realpath(path.join(
-            current_app.root_path, DATA_DIR, self.date_str,
+            current_app.root_path, DATA_DIR, "json", self.date_str,
             u"{}-{}.json".format(self.user_id, self.user_name)
         ))
 
