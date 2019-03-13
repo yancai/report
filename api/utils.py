@@ -90,5 +90,15 @@ def get_md_path(date_str):
     return md_dir
 
 
+def get_domain(user_id):
+    """获取域账号
+
+    :param user_id:
+    :return:
+    """
+    user_map = get_user_map()
+    return user_map.get(user_id, {}).get(KEY_DOMAIN, None)
+
+
 if __name__ == "__main__":
     pass

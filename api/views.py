@@ -3,11 +3,15 @@
 
 """Documentation"""
 import os
-from http import HTTPStatus
+from api.const import KEY_DOMAIN, PY_VERSION
+
+if PY_VERSION == "3":
+    from http import HTTPStatus as httplib
+elif PY_VERSION == "2":
+    import httplib as httplib
 
 from flask import Blueprint, jsonify, request, current_app, send_file
 
-from api.const import KEY_DOMAIN
 from api.model import PersonalReport
 from api.utils import list_report_by_date, verify_domain, get_md_path
 from settings import USERS
@@ -39,21 +43,21 @@ def create_daily_report(date_str, user_id):
         d = request.get_json()
     except Exception as e:
         current_app.logger.error(e)
-        return jsonify({}), HTTPStatus.INTERNAL_SERVER_ERROR
+        return jsonify({}), httplib.INTERNAL_SERVER_ERROR
 
     # 验证域账号
     if not verify_domain(user_id, d.get(KEY_DOMAIN, "")):
-        return jsonify({"msg": "验证域账号失败"}), HTTPStatus.FORBIDDEN
+        return jsonify({"msg": "验证域账号失败"}), httplib.FORBIDDEN
 
     report = PersonalReport(
         date_str, user_id, d.get("yesterday", []), d.get("today", [])
     )
     try:
         report.save()
-        return jsonify({"msg": "success"}), HTTPStatus.OK
+        return jsonify({"msg": "success"}), httplib.OK
     except Exception as e:
-        current_app.logger.errror(e)
-        return jsonify({"msg": "error"}), HTTPStatus.INTERNAL_SERVER_ERROR
+        current_app.logger.error(e)
+        return jsonify({"msg": "error"}), httplib.INTERNAL_SERVER_ERROR
 
 
 @api.route("/reports/<date_str>/")
@@ -98,7 +102,7 @@ def get_daily_report_md(date_str):
     md_path = os.path.realpath(os.path.join(
         get_md_path(date_str), date_str + ".md"
     ))
-    with open(md_path, "w+", encoding="utf-8") as f:
+    with open(md_path, "w+") as f:
         f.write(md_str)
 
     return send_file(

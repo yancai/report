@@ -6,7 +6,7 @@ from os import path
 from flask import current_app
 
 from api.const import KEY_USER_ID, KEY_USER_NAME, KEY_DATE_STR, KEY_YESTERDAY, KEY_TODAY
-from api.utils import get_user_map, get_date, prepare_path
+from api.utils import get_user_map, get_date, prepare_path, get_domain
 from settings import DATA_DIR
 
 
@@ -73,12 +73,12 @@ class PersonalReport(object):
         """
         filename = path.realpath(path.join(
             current_app.root_path, DATA_DIR, "json", self.date_str,
-            u"{}-{}.json".format(self.user_id, self.user_name)
+            u"{}-{}.json".format(self.user_id, get_domain(self.user_id))
         ))
 
         prepare_path(path.dirname(filename))
 
-        with open(filename, "w+", encoding="utf-8") as f:
+        with open(filename, "w+") as f:
             json.dump(self.to_map(), f)
 
     @staticmethod
