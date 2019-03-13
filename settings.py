@@ -5,6 +5,6 @@
 DATA_DIR = "./in/"
 
 USERS = [
-    {"id": "01", "name": "Tom"},
-    {"id": "02", "name": "Jack"},
+    {"id": "01", "name": "Tom", "domain": "tom"},
+    {"id": "02", "name": "Jack", "domain": "jack"},
 ]
