@@ -62,6 +62,7 @@ def list_report_by_date(date_str):
 
     filenames = os.listdir(report_dir)
     files = [path.join(report_dir, f) for f in filenames]
+    files = sorted(files)
 
     return files
 
