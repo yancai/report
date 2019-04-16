@@ -1,0 +1,12 @@
+[[source]]
+name = "pypi-aliyun"
+url = "https://mirrors.aliyun.com/pypi/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+Flask = "==1.0.2"
+
+[requires]
+python_version = "3.7"
